@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Pension VS Index Fund Calculator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React-typescript project with a Node.js Typescript backend. Unit tests with Jest library.
 
 ## Available Scripts
 

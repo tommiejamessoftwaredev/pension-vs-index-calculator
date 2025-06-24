@@ -1,0 +1,251 @@
+/* App.css */
+.app {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+.container {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+h1 {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 2.2em;
+}
+
+.subtitle {
+  text-align: center;
+  color: #7f8c8d;
+  margin-bottom: 30px;
+  font-size: 1.1em;
+}
+
+.key-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.result-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.result-card h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.3em;
+}
+
+.amount {
+  font-size: 2.2em;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.chart-container {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 12px;
+  margin: 20px 0;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.controls-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.controls {
+  background: #f1f2f6;
+  padding: 20px;
+  border-radius: 12px;
+  position: relative;
+}
+
+.controls h3 {
+  margin: 0 0 20px 0;
+  color: #2c3e50;
+  font-size: 1.4em;
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ddd;
+}
+
+.pension-controls {
+  border-left: 4px solid #667eea;
+}
+
+.index-controls {
+  border-left: 4px solid #764ba2;
+}
+
+.control-group {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.control-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.control-item label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #2c3e50;
+}
+
+.control-item input {
+  padding: 8px 12px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+.control-item input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.calculate-section {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.calculate-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.calculate-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.calculate-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #e74c3c;
+  background: #fadbd8;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.assumptions {
+  background: #e8f5e8;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 20px;
+  border-left: 5px solid #27ae60;
+}
+
+.assumptions h3 {
+  color: #27ae60;
+  margin-top: 0;
+}
+
+.assumptions ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.assumptions li {
+  margin: 8px 0;
+  line-height: 1.5;
+}
+
+.warning {
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  color: #856404;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.comparison-table th {
+  background: #667eea;
+  color: white;
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.comparison-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.comparison-table tr:nth-child(even) {
+  background: #f8f9fa;
+}
+
+@media (max-width: 768px) {
+  .controls-wrapper {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .key-results {
+    grid-template-columns: 1fr;
+  }
+  
+  .app {
+    padding: 10px;
+  }
+  
+  .container {
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 1.8em;
+  }
+  
+  .amount {
+    font-size: 1.8em;
+  }
+}
