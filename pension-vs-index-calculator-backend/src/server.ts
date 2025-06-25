@@ -44,8 +44,6 @@ const limiter = rateLimit({
 });
 app.use('/api/', limiter);
 
-// Interfaces
-
 
 // Calculation functions
 function calculateCompoundGrowth(
