@@ -11,8 +11,9 @@ namespace pvi_calculator_api.Services
 
         public TableStorageService(string connectionString)
         {
-            _calculationsTable = new TableClient(connectionString, "calculations");
-            _analyticsTable = new TableClient(connectionString, "analytics");
+            var serviceClient = new TableServiceClient(connectionString);
+            _calculationsTable = serviceClient.GetTableClient("calculations");
+            _analyticsTable = serviceClient.GetTableClient("analytics");
 
             // Create tables if they don't exist
             _calculationsTable.CreateIfNotExists();
