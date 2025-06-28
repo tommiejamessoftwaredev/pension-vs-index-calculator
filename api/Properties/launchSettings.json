@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "pension_vs_index_calculator_backend": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7270",
+      "launchBrowser": false
+    }
+  }
+}
