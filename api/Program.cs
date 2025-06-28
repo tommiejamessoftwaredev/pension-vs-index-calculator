@@ -1,10 +1,9 @@
-
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using pvi_calculator_api.Services;
 
 var host = new HostBuilder()
-    .ConfigureFunctionsWorkerDefaults()
+    .ConfigureFunctionsWebApplication()
     .ConfigureServices(services =>
     {
         services.AddScoped<CalculationService>();
