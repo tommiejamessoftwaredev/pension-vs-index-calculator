@@ -19,30 +19,34 @@ export interface IndexInputs {
   withdrawalRate: number;
 }
 
-export interface CalculationResult {
-  pension: {
-    finalBalance: number;
-    yearlyBalances: number[];
-    totalEmployeeContrib: number;
-    totalEmployerContrib: number;
-    years: number;
-  };
-  index: {
-    finalBalance: number;
-    yearlyBalances: number[];
-    totalContributions: number;
-    capitalGainsTax: number;
-    years: number;
-  };
-  difference: number;
-  calculationId: string;
-}
-
 export interface AnalyticsData {
   userAgent: string;
-  country: string;
   timestamp: string;
   screenResolution: string;
   timezone: string;
   language: string;
+}
+
+export interface CalculationRequest {
+  pensionInputs: PensionInputs;
+  indexInputs: IndexInputs;
+  analytics?: AnalyticsData;
+}
+
+export interface CalculationResult {
+  finalBalance: number;
+  yearlyBalances: number[];
+  totalEmployeeContrib?: number;
+  totalEmployerContrib?: number;
+  totalContributions?: number;
+  capitalGainsTax?: number;
+  years: number;
+}
+
+// Complete response from backend (matches C# CalculationResponse)
+export interface CalculationResponse {
+  pension: CalculationResult;
+  index: CalculationResult;
+  difference: number;
+  calculationId: string;
 }

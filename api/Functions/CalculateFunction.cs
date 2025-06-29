@@ -125,7 +125,9 @@ namespace pvi_calculator_api.Functions
             {
                 _logger.LogError(ex, "Error processing calculation");
                 var errorResponse = req.CreateResponse(HttpStatusCode.InternalServerError);
-                await errorResponse.WriteAsJsonAsync(new { error = "Internal server error" });
+                await errorResponse.WriteAsJsonAsync(
+                    new { error = $"Internal server error: {ex.Message}" }
+                );
                 return errorResponse;
             }
         }
