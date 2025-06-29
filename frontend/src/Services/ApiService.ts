@@ -1,4 +1,4 @@
-import { AnalyticsData, CalculationRequest, CalculationResponse } from '../Interfaces';
+import { CalculationRequest, CalculationResponse } from '../Interfaces';
 
 class ApiService {
   private baseUrl: string;
