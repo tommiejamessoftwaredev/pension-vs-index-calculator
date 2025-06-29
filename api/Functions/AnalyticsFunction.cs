@@ -2,21 +2,22 @@ using System.Net;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
-using pvi_calculator_api.Services;
+using pvi_calculator_api.Models;
+using pvi_calculator_api.Services.Interfaces;
 
 namespace pvi_calculator_api.Functions
 {
     public class AnalyticsFunction
     {
-        private readonly ILogger _logger;
-        private readonly TableStorageService _tableStorageService;
+        private readonly ILogger<AnalyticsFunction> _logger;
+        private readonly ITableStorageService _tableStorageService;
 
         public AnalyticsFunction(
-            ILoggerFactory loggerFactory,
-            TableStorageService tableStorageService
+            ILogger<AnalyticsFunction> logger,
+            ITableStorageService tableStorageService
         )
         {
-            _logger = loggerFactory.CreateLogger<AnalyticsFunction>();
+            _logger = logger;
             _tableStorageService = tableStorageService;
         }
 
@@ -26,10 +27,12 @@ namespace pvi_calculator_api.Functions
                 HttpRequestData req
         )
         {
-            _logger.LogInformation("Analytics function processed a request.");
+            _logger.LogInformation("Analytics data requested");
 
             try
             {
+                // In a real application, you'd want to add authentication here
+                // For now, we'll just return the data
                 var analyticsData = await _tableStorageService.GetAnalyticsAsync();
 
                 var response = req.CreateResponse(HttpStatusCode.OK);
@@ -38,10 +41,11 @@ namespace pvi_calculator_api.Functions
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error retrieving analytics");
+                _logger.LogError(ex, "Error retrieving analytics data");
+
                 var errorResponse = req.CreateResponse(HttpStatusCode.InternalServerError);
                 await errorResponse.WriteAsJsonAsync(
-                    new { error = $"Internal server error: {ex.Message}" }
+                    new ErrorResponse { Error = "Failed to retrieve analytics data" }
                 );
                 return errorResponse;
             }

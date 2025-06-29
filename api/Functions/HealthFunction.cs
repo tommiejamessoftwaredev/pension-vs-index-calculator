@@ -8,11 +8,11 @@ namespace pvi_calculator_api.Functions
 {
     public class HealthFunction
     {
-        private readonly ILogger _logger;
+        private readonly ILogger<HealthFunction> _logger;
 
-        public HealthFunction(ILoggerFactory loggerFactory)
+        public HealthFunction(ILogger<HealthFunction> logger)
         {
-            _logger = loggerFactory.CreateLogger<HealthFunction>();
+            _logger = logger;
         }
 
         [Function("Health")]
@@ -20,14 +20,27 @@ namespace pvi_calculator_api.Functions
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "health")] HttpRequestData req
         )
         {
-            _logger.LogInformation("Health check processed a request.");
+            _logger.LogInformation("Health check requested");
 
-            var response = req.CreateResponse(HttpStatusCode.OK);
-            await response.WriteAsJsonAsync(
-                new HealthResponse { Status = "OK", Timestamp = DateTime.UtcNow }
-            );
+            try
+            {
+                var response = req.CreateResponse(HttpStatusCode.OK);
+                await response.WriteAsJsonAsync(
+                    new HealthResponse { Status = "OK", Timestamp = DateTime.UtcNow }
+                );
 
-            return response;
+                return response;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Health check failed");
+
+                var errorResponse = req.CreateResponse(HttpStatusCode.InternalServerError);
+                await errorResponse.WriteAsJsonAsync(
+                    new ErrorResponse { Error = "Health check failed" }
+                );
+                return errorResponse;
+            }
         }
     }
 }
