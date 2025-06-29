@@ -46,37 +46,68 @@ const App: React.FC = () => {
     error,
     handleCalculate,
     handleCookieConsent,
+    validation,
   } = usePensionCalculator();
 
   return (
     <div className="app">
       <div className="container">
-        <h1>💰 NEST Pension vs Index Fund Investment</h1>
+        <h1>Pension vs Index Fund Investment</h1>
         <p className="subtitle">
           Flexible comparison with separate controls for each investment type
         </p>
 
         <div className="controls-wrapper">
-          <PensionInputs 
-            inputs={pensionInputs} 
-            onChange={setPensionInputs} 
+          <PensionInputs
+            inputs={pensionInputs}
+            onChange={setPensionInputs}
+            getFieldError={validation.getFieldError}
+            hasFieldError={validation.hasFieldError}
           />
-          <IndexInputs 
-            inputs={indexInputs} 
-            onChange={setIndexInputs} 
+          <IndexInputs
+            inputs={indexInputs}
+            onChange={setIndexInputs}
+            getFieldError={validation.getFieldError}
+            hasFieldError={validation.hasFieldError}
           />
         </div>
 
-        <CalculateButton 
+        <CalculateButton
           loading={loading}
           onClick={handleCalculate}
           error={error}
+          disabled={!validation.isValid}
+          validationErrors={validation.allErrors.length}
         />
+
+        {/* Show validation errors summary */}
+        {validation.allErrors.length > 0 && (
+          <div className="validation-errors-summary">
+            <h4>⚠️ Please fix these issues:</h4>
+            <ul>
+              {validation.allErrors.map((error, index) => (
+                <li key={index}>{error.message}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* Show server validation errors if any */}
+        {validation.serverErrors.length > 0 && (
+          <div className="server-validation-errors">
+            <h4>🚫 Server Validation Errors:</h4>
+            <ul>
+              {validation.serverErrors.map((error, index) => (
+                <li key={index}>{error}</li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         {results && (
           <>
             <CalculationResults results={results} />
-            <ComparisonChart 
+            <ComparisonChart
               results={results}
               pensionInputs={pensionInputs}
               indexInputs={indexInputs}

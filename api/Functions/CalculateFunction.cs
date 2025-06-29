@@ -95,7 +95,7 @@ namespace pvi_calculator_api.Functions
                     calculationRequest.PensionInputs.AnnualReturn,
                     pensionYears,
                     calculationRequest.PensionInputs.TaxRelief,
-                    0.75m, // NEST charges
+                    0.75m, // charges
                     calculationRequest.PensionInputs.EmployerContrib,
                     calculationRequest.PensionInputs.AnnualIncrease
                 );

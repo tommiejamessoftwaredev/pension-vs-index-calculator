@@ -11,7 +11,7 @@ using pvi_calculator_api.Services.Interfaces;
 using pvi_calculator_api.Validators;
 
 var host = new HostBuilder()
-    .ConfigureFunctionsWorkerDefaults(builder =>
+    .ConfigureFunctionsWebApplication(builder =>
     {
         // Configure JSON serialization options
         builder.Services.Configure<JsonSerializerOptions>(options =>

@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import { PensionInputs, IndexInputs, CalculationResponse } from '../Interfaces';
-import { apiService } from '../Services/ApiService';
-import { CookieService } from '../Services/CookieService';
-import { collectAnalyticsData } from '../Helpers/analytics';
+import { useState, useEffect } from "react";
+import { PensionInputs, IndexInputs, CalculationResponse } from "../Interfaces";
+import { apiService, ValidationApiError, CookieService } from "../Services";
+import { collectAnalyticsData } from "../Helpers";
+import { useValidation } from "./useValidation";
 
 export const usePensionCalculator = () => {
   const [pensionInputs, setPensionInputs] = useState<PensionInputs>({
@@ -31,17 +31,31 @@ export const usePensionCalculator = () => {
   const [error, setError] = useState<string | null>(null);
   const [cookiesAccepted, setCookiesAccepted] = useState(false);
 
+  // Use validation hook
+  const validation = useValidation(pensionInputs, indexInputs);
+
   useEffect(() => {
     setCookiesAccepted(CookieService.hasConsent());
   }, []);
 
   const handleCalculate = async () => {
-    setLoading(true);
+    // Clear previous errors
     setError(null);
+    validation.clearServerErrors();
+
+    // Check client-side validation first
+    if (!validation.isValid) {
+      setError("Please fix the validation errors before calculating");
+      return;
+    }
+
+    setLoading(true);
 
     try {
-      const analyticsData = cookiesAccepted ? collectAnalyticsData() : undefined;
-      
+      const analyticsData = cookiesAccepted
+        ? collectAnalyticsData()
+        : undefined;
+
       const request = {
         pensionInputs,
         indexInputs,
@@ -51,7 +65,13 @@ export const usePensionCalculator = () => {
       const result = await apiService.calculateComparison(request);
       setResults(result);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
+      if (err instanceof ValidationApiError) {
+        // Handle server-side validation errors
+        validation.setServerValidationErrors(err.details);
+        setError(`Validation failed: ${err.details.join(", ")}`);
+      } else {
+        setError(err instanceof Error ? err.message : "An error occurred");
+      }
     } finally {
       setLoading(false);
     }
@@ -63,6 +83,7 @@ export const usePensionCalculator = () => {
   };
 
   return {
+    // State
     pensionInputs,
     setPensionInputs,
     indexInputs,
@@ -71,7 +92,12 @@ export const usePensionCalculator = () => {
     loading,
     error,
     cookiesAccepted,
+
+    // Actions
     handleCalculate,
     handleCookieConsent,
+
+    // Validation
+    validation,
   };
 };

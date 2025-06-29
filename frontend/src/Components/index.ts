@@ -7,3 +7,4 @@ export { ComparisonTable } from './ComparisonTable';
 export { Assumptions } from './Assumptions';
 export { DisclaimerWarning } from './DisclaimerWarning';
 export { CookieConsentBanner } from './CookieConsentBanner';
+export { ValidatedInput } from './ValidatedInput';
