@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pension-vs-index-calculator-backend", "pension-vs-index-calculator-backend\pension-vs-index-calculator-backend.csproj", "{AE086153-F850-A11A-25C0-0D5E6669DEFC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pension-vs-index-calculator-backend", "api/pension-vs-index-calculator-backend\pension-vs-index-calculator-backend.csproj", "{AE086153-F850-A11A-25C0-0D5E6669DEFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
