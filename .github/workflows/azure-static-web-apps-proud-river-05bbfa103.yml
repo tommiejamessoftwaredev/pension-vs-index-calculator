@@ -27,7 +27,7 @@ jobs:
 
       - name: Publish Azure Functions
         run: |
-          dotnet publish ./api/pension-vs-index-calculator-backend/pension-vs-index-calculator-backend.csproj \
+          dotnet publish ./api/pension-vs-index-calculator-backend.csproj \
             --configuration Release \
             --output ./api/bin/Release/net8.0/publish
 
