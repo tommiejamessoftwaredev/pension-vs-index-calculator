@@ -23,13 +23,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
-
-      - name: Publish Azure Functions
-        run: |
-          dotnet publish ./api/pension-vs-index-calculator-backend.csproj \
-            --configuration Release \
-            --output ./api/bin/Release/net8.0/publish
+          dotnet-version: "8.0.x"
 
       - name: Build And Deploy
         id: builddeploy
