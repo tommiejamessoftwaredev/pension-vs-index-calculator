@@ -12,7 +12,7 @@
 			"type": "process",
 			"problemMatcher": "$msCompile",
 			"options": {
-				"cwd": "${workspaceFolder}/pension-vs-index-calculator-backend"
+				"cwd": "${workspaceFolder}/api/pension-vs-index-calculator-backend"
 			}
 		},
 		{
@@ -31,7 +31,7 @@
 			},
 			"problemMatcher": "$msCompile",
 			"options": {
-				"cwd": "${workspaceFolder}/pension-vs-index-calculator-backend"
+				"cwd": "${workspaceFolder}/api/pension-vs-index-calculator-backend"
 			}
 		},
 		{
@@ -47,7 +47,7 @@
 			"type": "process",
 			"problemMatcher": "$msCompile",
 			"options": {
-				"cwd": "${workspaceFolder}/pension-vs-index-calculator-backend"
+				"cwd": "${workspaceFolder}/api/pension-vs-index-calculator-backend"
 			}
 		},
 		{
@@ -64,14 +64,14 @@
 			"dependsOn": "clean release (functions)",
 			"problemMatcher": "$msCompile",
 			"options": {
-				"cwd": "${workspaceFolder}/pension-vs-index-calculator-backend"
+				"cwd": "${workspaceFolder}/api/pension-vs-index-calculator-backend"
 			}
 		},
 		{
 			"type": "func",
 			"dependsOn": "build (functions)",
 			"options": {
-				"cwd": "${workspaceFolder}/pension-vs-index-calculator-backend/bin/Debug/net8.0"
+				"cwd": "${workspaceFolder}/api/pension-vs-index-calculator-backend/bin/Debug/net8.0"
 			},
 			"command": "host start",
 			"isBackground": true,
