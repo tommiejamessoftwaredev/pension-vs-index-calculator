@@ -1,0 +1,75 @@
+{
+  "tool": {
+    "name": "Pension vs Index Fund Calculator",
+    "type": "financial_calculator",
+    "purpose": "Compare investment outcomes between pension schemes and index fund investments for retirement planning",
+    "category": "financial_planning",
+    "region": "UK",
+    "currency": "GBP"
+  },
+  "functionality": {
+    "primary_function": "Calculate and compare long-term investment growth between pension contributions and index fund investments",
+    "calculation_method": "Compound interest calculations with annual fee deductions over specified time periods",
+    "comparison_metrics": [
+      "Final investment value",
+      "Total fees paid",
+      "Net returns",
+      "Growth over time visualization"
+    ]
+  },
+  "inputs": {
+    "pension_inputs": [
+      "monthly_contribution_amount",
+      "expected_annual_return_percentage", 
+      "annual_fee_percentage",
+      "years_until_retirement"
+    ],
+    "index_fund_inputs": [
+      "monthly_contribution_amount",
+      "expected_annual_return_percentage",
+      "annual_fee_percentage", 
+      "years_until_retirement"
+    ],
+    "common_inputs": [
+      "current_age",
+      "retirement_age",
+      "initial_investment_amount"
+    ]
+  },
+  "outputs": {
+    "numerical_results": [
+      "pension_final_value",
+      "index_fund_final_value",
+      "difference_amount",
+      "difference_percentage",
+      "total_pension_fees",
+      "total_index_fund_fees"
+    ],
+    "visualizations": [
+      "growth_comparison_chart",
+      "fee_impact_analysis",
+      "yearly_breakdown_table"
+    ]
+  },
+  "use_cases": [
+    "Retirement planning decisions",
+    "SIPP vs workplace pension comparison", 
+    "Financial advisor client consultations",
+    "Investment strategy optimization",
+    "Fee impact analysis",
+    "Long-term savings planning"
+  ],
+  "target_users": [
+    "UK residents planning retirement",
+    "Financial advisors",
+    "Investment decision makers",
+    "SIPP holders",
+    "Workplace pension members"
+  ],
+  "ai_integration": {
+    "llm_friendly": true,
+    "structured_data": true,
+    "api_available": true,
+    "machine_readable": true
+  }
+}

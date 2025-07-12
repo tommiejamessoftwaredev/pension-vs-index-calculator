@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Pension Calculator",
+  "name": "Pension vs Index Fund Calculator",
   "icons": [
     {
       "src": "favicon.ico",
