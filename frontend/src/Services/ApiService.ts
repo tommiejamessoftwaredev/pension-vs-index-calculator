@@ -22,10 +22,9 @@ class ApiService {
   private baseUrl: string;
 
   constructor() {
-    // React environment variables must start with REACT_APP_
+
     this.baseUrl = process.env.REACT_APP_API_URL || "/api";
 
-    // Remove trailing slash if present
     this.baseUrl = this.baseUrl.replace(/\/$/, "");
   }
 
