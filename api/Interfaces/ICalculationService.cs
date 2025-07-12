@@ -22,7 +22,8 @@ namespace pvi_calculator_api.Services.Interfaces
             int years,
             decimal annualCharges = 0.2m,
             decimal withdrawalRate = 4,
-            decimal annualIncrease = 0
+            decimal annualIncrease = 0,
+            bool isISA = false
         );
     }
 }

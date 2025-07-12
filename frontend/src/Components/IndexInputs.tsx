@@ -15,7 +15,7 @@ export const IndexInputs: React.FC<IndexInputsProps> = ({
   getFieldError,
   hasFieldError
 }) => {
-  const handleChange = (field: keyof IndexInputsType, value: number) => {
+  const handleChange = (field: keyof IndexInputsType, value: number | boolean) => {
     onChange({
       ...inputs,
       [field]: value,
@@ -91,6 +91,17 @@ export const IndexInputs: React.FC<IndexInputsProps> = ({
           min="0.1"
           max="15"
         />
+
+        <div className="checkbox-group">
+          <label className="checkbox-label">
+            <input
+              type="checkbox"
+              checked={inputs.isISA}
+              onChange={(e) => handleChange('isISA', e.target.checked)}
+            />
+            Stocks & Shares ISA (tax-free withdrawals)
+          </label>
+        </div>
       </div>
     </div>
   );

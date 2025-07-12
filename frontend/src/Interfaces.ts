@@ -17,6 +17,7 @@ export interface IndexInputs {
   annualIncrease: number;
   annualReturn: number;
   withdrawalRate: number;
+  isISA: boolean;
 }
 
 export interface AnalyticsData {

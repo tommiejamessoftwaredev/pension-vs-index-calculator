@@ -24,6 +24,7 @@ export const usePensionCalculator = () => {
     annualIncrease: 3,
     annualReturn: 7.0,
     withdrawalRate: 4,
+    isISA: false,
   });
 
   const [results, setResults] = useState<CalculationResponse | null>(null);

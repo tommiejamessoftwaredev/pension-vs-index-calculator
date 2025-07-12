@@ -89,7 +89,8 @@ namespace pvi_calculator_api.Services
             int years,
             decimal annualCharges = 0.2m,
             decimal withdrawalRate = 4,
-            decimal annualIncrease = 0
+            decimal annualIncrease = 0,
+            bool isISA = false
         )
         {
             try
@@ -121,37 +122,42 @@ namespace pvi_calculator_api.Services
                     }
                 }
 
-                // Calculate tax on withdrawal
-                var retirementYears = 25;
-                var annualWithdrawal = balance * (withdrawalRate / 100);
-                var remainingBalance = balance;
-                var remainingContributions = totalContributions;
+                // Calculate tax on withdrawal (ISA has no capital gains tax)
                 var totalCapitalGainsTax = 0m;
+                var effectiveValue = balance;
 
-                for (int year = 1; year <= retirementYears && remainingBalance > 0; year++)
+                if (!isISA)
                 {
-                    remainingBalance *= (1 + (annualRate - annualCharges) / 100);
+                    var retirementYears = 25;
+                    var annualWithdrawal = balance * (withdrawalRate / 100);
+                    var remainingBalance = balance;
+                    var remainingContributions = totalContributions;
 
-                    var withdrawAmount = Math.Min(annualWithdrawal, remainingBalance);
-                    var gainsRatio = Math.Max(
-                        0,
-                        (remainingBalance - remainingContributions) / remainingBalance
-                    );
-                    var gainsPortion = withdrawAmount * gainsRatio;
-                    var contributionsPortion = withdrawAmount * (1 - gainsRatio);
+                    for (int year = 1; year <= retirementYears && remainingBalance > 0; year++)
+                    {
+                        remainingBalance *= (1 + (annualRate - annualCharges) / 100);
 
-                    var taxableGains = Math.Max(0, gainsPortion - capitalGainsAllowance);
-                    var yearlyTax = taxableGains * capitalGainsRate;
-                    totalCapitalGainsTax += yearlyTax;
+                        var withdrawAmount = Math.Min(annualWithdrawal, remainingBalance);
+                        var gainsRatio = Math.Max(
+                            0,
+                            (remainingBalance - remainingContributions) / remainingBalance
+                        );
+                        var gainsPortion = withdrawAmount * gainsRatio;
+                        var contributionsPortion = withdrawAmount * (1 - gainsRatio);
 
-                    remainingBalance -= withdrawAmount;
-                    remainingContributions -= contributionsPortion;
+                        var taxableGains = Math.Max(0, gainsPortion - capitalGainsAllowance);
+                        var yearlyTax = taxableGains * capitalGainsRate;
+                        totalCapitalGainsTax += yearlyTax;
 
-                    if (remainingBalance < 1000)
-                        break;
+                        remainingBalance -= withdrawAmount;
+                        remainingContributions -= contributionsPortion;
+
+                        if (remainingBalance < 1000)
+                            break;
+                    }
+
+                    effectiveValue = balance - totalCapitalGainsTax;
                 }
-
-                var effectiveValue = balance - totalCapitalGainsTax;
 
                 _logger.LogInformation(
                     "Index growth calculation completed. Final balance: {FinalBalance:C}, Tax: {Tax:C}",

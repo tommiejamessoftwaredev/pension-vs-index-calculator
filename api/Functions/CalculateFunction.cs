@@ -110,7 +110,8 @@ namespace pvi_calculator_api.Functions
                     indexYears,
                     0.2m, // Index fund charges
                     calculationRequest.IndexInputs.WithdrawalRate,
-                    calculationRequest.IndexInputs.AnnualIncrease
+                    calculationRequest.IndexInputs.AnnualIncrease,
+                    calculationRequest.IndexInputs.IsISA
                 );
 
                 var difference = pensionResult.FinalBalance - indexResult.FinalBalance;

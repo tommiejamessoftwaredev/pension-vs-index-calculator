@@ -51,6 +51,9 @@ namespace pvi_calculator_api.Models
 
         [JsonPropertyName("withdrawalRate")]
         public decimal WithdrawalRate { get; set; }
+
+        [JsonPropertyName("isISA")]
+        public bool IsISA { get; set; }
     }
 
     public class AnalyticsData
