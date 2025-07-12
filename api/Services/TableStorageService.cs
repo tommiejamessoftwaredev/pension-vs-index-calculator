@@ -28,10 +28,7 @@ namespace pvi_calculator_api.Services
             _calculationsTable = new TableClient(connectionString, "calculations");
             _analyticsTable = new TableClient(connectionString, "analytics");
 
-            // Create tables if they don't exist
-            _calculationsTable.CreateIfNotExists();
-            _analyticsTable.CreateIfNotExists();
-
+            // Tables will be created on first use instead of during initialization
             _logger.LogInformation("TableStorageService initialized successfully");
         }
 
@@ -49,6 +46,9 @@ namespace pvi_calculator_api.Services
             try
             {
                 _logger.LogInformation("Saving calculation {CalculationId}", calculationId);
+
+                // Ensure table exists before adding entity
+                await _calculationsTable.CreateIfNotExistsAsync();
 
                 var entity = new TableEntity("calculation", calculationId)
                 {
@@ -97,6 +97,9 @@ namespace pvi_calculator_api.Services
                     "Saving analytics for calculation {CalculationId}",
                     calculationId
                 );
+
+                // Ensure table exists before adding entity
+                await _analyticsTable.CreateIfNotExistsAsync();
 
                 var entity = new TableEntity("analytics", Guid.NewGuid().ToString())
                 {
