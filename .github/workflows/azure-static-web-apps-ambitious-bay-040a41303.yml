@@ -22,6 +22,16 @@ jobs:
         with:
           submodules: true
           lfs: false
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+      - name: Clean API
+        run: dotnet clean ./api/pension-vs-index-calculator-backend.csproj
+      - name: Restore API dependencies
+        run: dotnet restore ./api/pension-vs-index-calculator-backend.csproj
+      - name: Build API
+        run: dotnet build ./api/pension-vs-index-calculator-backend.csproj --configuration Release --no-restore
       - name: Install OIDC Client from Core Package
         run: npm install @actions/core@1.6.0 @actions/http-client
       - name: Get Id Token
