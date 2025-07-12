@@ -32,6 +32,18 @@ jobs:
         run: dotnet restore ./api/pension-vs-index-calculator-backend.csproj
       - name: Build API
         run: dotnet build ./api/pension-vs-index-calculator-backend.csproj --configuration Release --no-restore
+      - name: Log artifact sizes
+        run: |
+          echo "=== Frontend build size ==="
+          du -sh ./frontend/build/ || echo "Frontend build directory not found"
+          echo "=== API build size ==="
+          du -sh ./api/bin/ || echo "API bin directory not found"
+          echo "=== API publish size ==="
+          du -sh ./api/obj/ || echo "API obj directory not found"
+          echo "=== Total project size ==="
+          du -sh .
+          echo "=== Detailed API directory listing ==="
+          find ./api -type f -name "*.dll" -o -name "*.exe" -o -name "*.json" | head -20
       - name: Install OIDC Client from Core Package
         run: npm install @actions/core@1.6.0 @actions/http-client
       - name: Get Id Token
