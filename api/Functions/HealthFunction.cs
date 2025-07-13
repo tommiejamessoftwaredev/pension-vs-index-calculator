@@ -16,7 +16,7 @@ namespace pvi_calculator_api.Functions
         }
 
         [Function("Health")]
-        public async Task<HttpResponseData> RunAsync(
+        public async Task<HttpResponseData> Health(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "health")] HttpRequestData req
         )
         {

@@ -22,7 +22,7 @@ namespace pvi_calculator_api.Functions
         }
 
         [Function("Analytics")]
-        public async Task<HttpResponseData> RunAsync(
+        public async Task<HttpResponseData> Analytics(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "analytics")]
                 HttpRequestData req
         )

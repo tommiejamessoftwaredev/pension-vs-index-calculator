@@ -30,7 +30,7 @@ namespace pvi_calculator_api.Functions
         }
 
         [Function("Calculate")]
-        public async Task<HttpResponseData> RunAsync(
+        public async Task<HttpResponseData> CalculatePension(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "calculate")]
                 HttpRequestData req
         )
