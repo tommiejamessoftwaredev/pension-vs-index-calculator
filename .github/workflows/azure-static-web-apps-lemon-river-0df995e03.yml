@@ -38,6 +38,7 @@ jobs:
         env:
           CI: false
           REACT_APP_API_BASE_URL: ${{ vars.REACT_APP_API_BASE_URL }}
+          TABLESTORAGECONNECTIONSTRING: ${{ secrets.TABLESTORAGECONNECTIONSTRING }} 
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_LEMON_RIVER_0DF995E03 }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}

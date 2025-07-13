@@ -21,8 +21,7 @@ namespace pvi_calculator_api.Services
             _logger = logger;
 
             var connectionString =
-                configuration.GetConnectionString("AzureWebJobsStorage")
-                ?? Environment.GetEnvironmentVariable("AzureWebJobsStorage")
+                Environment.GetEnvironmentVariable("TABLESTORAGECONNECTIONSTRING")
                 ?? throw new InvalidOperationException("Azure Storage connection string not found");
 
             _calculationsTable = new TableClient(connectionString, "calculations");
