@@ -1,6 +1,7 @@
 {
   "globalHeaders": {
     "Access-Control-Allow-Origin": "https://pension-vs-index-calculator.com/",
-    "Access-Control-Allow-Credentials": "true"
+    "Access-Control-Allow-Credentials": "true",
+    "Cache-Control": "no-cache, no-store, must-revalidate"
   }
 }
