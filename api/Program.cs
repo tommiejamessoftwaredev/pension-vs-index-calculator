@@ -1,5 +1,6 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Azure.Core.Serialization;
 using FluentValidation;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Configuration;
@@ -12,14 +13,19 @@ using pvi_calculator_api.Services.Interfaces;
 using pvi_calculator_api.Validators;
 
 var host = new HostBuilder()
-    .ConfigureFunctionsWebApplication(builder =>
+    .ConfigureFunctionsWorkerDefaults(builder =>
     {
-        // Configure JSON serialization options
-        builder.Services.Configure<JsonSerializerOptions>(options =>
+        // Configure JSON serialization options for Functions Worker
+        builder.Services.Configure<WorkerOptions>(options =>
         {
-            options.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
-            options.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
-            options.PropertyNameCaseInsensitive = true;
+            options.Serializer = new JsonObjectSerializer(
+                new JsonSerializerOptions
+                {
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+                    PropertyNameCaseInsensitive = true,
+                }
+            );
         });
     })
     .ConfigureServices(
