@@ -1,3 +1,5 @@
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using FluentValidation;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,7 +17,15 @@ var host = new HostBuilder()
         services.AddApplicationInsightsTelemetryWorkerService();
         services.ConfigureFunctionsApplicationInsights();
 
-        // Your existing services
+        // Configure JSON serialization
+        services.Configure<JsonSerializerOptions>(options =>
+        {
+            options.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+            options.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+            options.PropertyNameCaseInsensitive = true;
+        });
+
+        // Your services
         services.AddScoped<ICalculationService, CalculationService>();
         services.AddScoped<ITableStorageService, TableStorageService>();
 
