@@ -80,7 +80,6 @@ const App: React.FC = () => {
           validationErrors={validation.allErrors.length}
         />
 
-        {/* Show validation errors summary */}
         {validation.allErrors.length > 0 && (
           <div className="validation-errors-summary">
             <h4>⚠️ Please fix these issues:</h4>
@@ -92,7 +91,6 @@ const App: React.FC = () => {
           </div>
         )}
 
-        {/* Show server validation errors if any */}
         {validation.serverErrors.length > 0 && (
           <div className="server-validation-errors">
             <h4>🚫 Server Validation Errors:</h4>
