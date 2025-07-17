@@ -35,7 +35,7 @@ This application follows a modern full-stack architecture:
 - **Type Safety** - Full TypeScript implementation across frontend
 - **Cloud Integration** - Azure-native architecture for scalability
 - **Input Validation** - Comprehensive validation using FluentValidation
-- **Testing** - Unit tests with React Testing Library
+- **Testing** - Unit tests with React Testing Library, Xunit and NSubstitute
 
 ## Technical Highlights
 
