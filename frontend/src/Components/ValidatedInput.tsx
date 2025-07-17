@@ -21,10 +21,13 @@ export const ValidatedInput: React.FC<ValidatedInputProps> = ({
     min,
     max
 }) => {
+    const inputId = `input-${label.toLowerCase().replace(/\s+/g, '-')}`;
+    
     return (
         <div className="control-item">
-            <label className={error ? 'error-label' : ''}>{label}</label>
+            <label htmlFor={inputId} className={error ? 'error-label' : ''}>{label}</label>
             <input
+                id={inputId}
                 type={type}
                 value={value}
                 onChange={(e) => onChange(Number(e.target.value))}

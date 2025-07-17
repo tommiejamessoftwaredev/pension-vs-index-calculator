@@ -8,7 +8,7 @@ A full-stack web application for calculating pension and investment projections,
 - **React 18** with TypeScript - Component-based architecture
 - **Chart.js** with react-chartjs-2 - Interactive data visualizations
 - **TypeScript** - Type-safe development
-- **React Testing Library** - Unit testing
+- **Jest Testing Library** - Unit testing (Coverage: 61.71%)
 - **ESLint** - Code quality and standards
 
 ### Backend
@@ -59,7 +59,7 @@ This application follows a modern full-stack architecture:
 - Implemented proper environment configuration management
 - Set up monitoring and logging with Application Insights
 
-## 🛠️ Development Setup
+## Development Setup
 
 ### Prerequisites
 - Node.js 18+
@@ -81,7 +81,7 @@ dotnet restore
 func start
 ```
 
-## 🧪 Testing
+## Testing
 
 ### Frontend Tests
 ```bash
@@ -109,6 +109,6 @@ dotnet test
 - Azure security features and managed services
 - Proper error handling and logging
 
-## 🌐 Live Demo
+## Live Demo
 
 [https://pension-vs-index-calculator.com/](https://pension-vs-index-calculator.com/)
