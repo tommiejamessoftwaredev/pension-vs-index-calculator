@@ -1,46 +1,114 @@
-# Pension VS Index Fund Calculator
+# Pension Calculator
 
-A React-typescript project with a Node.js Typescript backend. Unit tests with Jest library.
+A full-stack web application for calculating pension and investment projections, built with React/TypeScript frontend and .NET 8 Azure Functions backend.
 
-## Available Scripts
+## Technologies Used
 
-In the project directory, you can run:
+### Frontend
+- **React 18** with TypeScript - Component-based architecture
+- **Chart.js** with react-chartjs-2 - Interactive data visualizations
+- **TypeScript** - Type-safe development
+- **React Testing Library** - Unit testing
+- **ESLint** - Code quality and standards
 
-### `npm start`
+### Backend
+- **ASP.NET Core (.NET 8)** - Azure Functions serverless architecture
+- **Azure Table Storage** - NoSQL data persistence
+- **FluentValidation** - Input validation and business rules
+- **Application Insights** - Monitoring and telemetry
+- **Azure Functions Worker** - HTTP APIs and serverless computing
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Architecture
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+This application follows a modern full-stack architecture:
 
-### `npm test`
+- **Frontend**: React SPA with TypeScript serving responsive UI components
+- **Backend**: Serverless Azure Functions providing RESTful APIs
+- **Storage**: Azure Table Storage for scalable data persistence
+- **Deployment**: Azure cloud services integration
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Key Features
 
-### `npm run build`
+- **Interactive Pension Calculations** - Real-time pension projection calculations
+- **Data Visualization** - Charts and graphs for financial projections
+- **Responsive Design** - Mobile-first approach with modern UI components
+- **Type Safety** - Full TypeScript implementation across frontend
+- **Cloud Integration** - Azure-native architecture for scalability
+- **Input Validation** - Comprehensive validation using FluentValidation
+- **Testing** - Unit tests with React Testing Library
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Technical Highlights
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Frontend Development
+- Built responsive UI components from scratch using modern React patterns
+- Implemented TypeScript for type safety and better developer experience
+- Integrated Chart.js for interactive data visualizations
+- Applied component-based architecture with reusable modules
+- Configured ESLint for code quality and consistency
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Backend Development
+- Developed RESTful APIs using ASP.NET Core Azure Functions
+- Implemented serverless architecture for cost-effective scaling
+- Used Azure Table Storage for efficient data operations
+- Applied FluentValidation for robust input validation
+- Integrated Application Insights for monitoring and telemetry
 
-### `npm run eject`
+### Cloud & DevOps
+- Deployed on Azure Functions for serverless computing
+- Configured Azure Table Storage for NoSQL data persistence
+- Implemented proper environment configuration management
+- Set up monitoring and logging with Application Insights
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 🛠️ Development Setup
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Prerequisites
+- Node.js 18+
+- .NET 8 SDK
+- Azure Functions Core Tools
+- Azure Storage Account
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Frontend Setup
+```bash
+cd frontend
+npm install
+npm start
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Backend Setup
+```bash
+cd api
+dotnet restore
+func start
+```
 
-## Learn More
+## 🧪 Testing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Frontend Tests
+```bash
+cd frontend
+npm test
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Backend Tests
+```bash
+cd api
+dotnet test
+```
+
+## Performance & Scalability
+
+- **Serverless Architecture**: Azure Functions provide automatic scaling
+- **Efficient Data Access**: Azure Table Storage for fast NoSQL operations
+- **Optimized Frontend**: React 18 with modern bundling and optimization
+- **Type Safety**: TypeScript reduces runtime errors and improves maintainability
+
+## Security & Best Practices
+
+- Input validation using FluentValidation
+- TypeScript for compile-time error detection
+- Azure security features and managed services
+- Proper error handling and logging
+
+## 🌐 Live Demo
+
+[https://pension-vs-index-calculator.com/](https://pension-vs-index-calculator.com/)
