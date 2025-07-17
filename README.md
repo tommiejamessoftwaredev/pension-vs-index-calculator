@@ -91,7 +91,7 @@ npm test
 
 ### Backend Tests
 ```bash
-cd api
+cd api/Tests/
 dotnet test
 ```
 
